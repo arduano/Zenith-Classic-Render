@@ -133,7 +133,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>forfiles /p "..\lib" /c "cmd /c del ..\Plugins\@file" 2&gt;nul
+forfiles /m *.pdb /c "cmd /c del @file" 2&gt;nul
+forfiles /m *.xml /c "cmd /c del @file" 2&gt;nul</PostBuildEvent>
   </PropertyGroup>
 </Project>

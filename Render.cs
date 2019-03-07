@@ -93,6 +93,8 @@ void main()
 
         public double LastMidiTimePerTick { get; set; } = 500000 / 96.0;
 
+        public bool ManualNoteDelete => false;
+
         int noteShader;
 
         int vertexBufferID;
@@ -216,6 +218,10 @@ void main()
             }
         }
 
+        Color4[] keyColors = new Color4[514];
+        double[] x1array = new double[257];
+        double[] wdtharray = new double[257];
+
         public void RenderFrame(FastList<Note> notes, double midiTime, int finalCompositeBuff)
         {
             GL.Enable(EnableCap.Blend);
@@ -247,7 +253,6 @@ void main()
             double deltaTimeOnScreen = NoteScreenTime;
             double pianoHeight = settings.pianoHeight;
             bool sameWidth = settings.sameWidthNotes;
-            Color4[] keyColors = new Color4[514];
             for (int i = 0; i < 514; i++) keyColors[i] = Color4.Transparent;
             double wdth;
             float r, g, b, a, r2, g2, b2, a2, r3, g3, b3, a3;
@@ -259,8 +264,6 @@ void main()
             double xx1, xx2, yy1, yy2;
             double ys1, ys2;
 
-            double[] x1array = new double[257];
-            double[] wdtharray = new double[257];
             if (settings.sameWidthNotes)
             {
                 for (int i = 0; i < 257; i++)
@@ -383,10 +386,6 @@ void main()
 
                     }
                     else break;
-                }
-                else
-                {
-                    n.delete = true;
                 }
 
             }

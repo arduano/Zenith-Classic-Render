@@ -95,6 +95,8 @@ void main()
 
         public bool ManualNoteDelete => false;
 
+        public int NoteCollectorOffset => 0;
+
         int noteShader;
 
         int vertexBufferID;
@@ -324,8 +326,22 @@ void main()
                         Color4 colr = n.track.trkColor[n.channel * 2 + 1];
                         if (n.start < midiTime)
                         {
-                            keyColors[k * 2] = coll;
-                            keyColors[k * 2 + 1] = colr;
+                            Color4 origcoll = keyColors[k * 2];
+                            Color4 origcolr = keyColors[k * 2 + 1];
+                            float blendfac = coll.A * 0.8f;
+                            float revblendfac = 1 - blendfac;
+                            keyColors[k * 2] = new Color4(
+                                coll.R * blendfac + origcoll.R * revblendfac,
+                                coll.G * blendfac + origcoll.G * revblendfac,
+                                coll.B * blendfac + origcoll.B * revblendfac,
+                                1);
+                            blendfac = colr.A * 0.8f;
+                            revblendfac = 1 - blendfac;
+                            keyColors[k * 2 + 1] = new Color4(
+                                colr.R * blendfac + origcolr.R * revblendfac,
+                                colr.G * blendfac + origcolr.G * revblendfac,
+                                colr.B * blendfac + origcolr.B * revblendfac,
+                                1);
                         }
                         x1 = x1array[k];
                         wdth = wdtharray[k];

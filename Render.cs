@@ -312,9 +312,9 @@ void main()
             #region Notes
             quadBufferPos = 0;
             double notePosFactor = 1 / deltaTimeOnScreen * (1 - pianoHeight);
+            double renderCutoff = midiTime + deltaTimeOnScreen;
             foreach (Note n in notes)
             {
-                double renderCutoff = midiTime + deltaTimeOnScreen;
                 if (n.end >= midiTime || !n.hasEnded)
                 {
                     if (n.start < renderCutoff)

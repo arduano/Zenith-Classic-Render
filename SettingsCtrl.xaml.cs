@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BMEngine;
 using Newtonsoft.Json;
 
 namespace ClassicRender
@@ -35,12 +36,14 @@ namespace ClassicRender
             if (settings.tickBased) tickBase.SelectedIndex = 0;
             else tickBase.SelectedIndex = 1;
             screenTime.Content = (Math.Round(settings.deltaTimeOnScreen * 100) / 100).ToString();
+            paletteList.SelectImage(settings.palette);
         }
 
         public SettingsCtrl(Settings settings) : base()
         {
             InitializeComponent();
             this.settings = settings;
+            paletteList.SetPath("Plugins\\Assets\\Classic\\Palettes");
             LoadSettings(true);
             SetValues();
         }
@@ -73,6 +76,7 @@ namespace ClassicRender
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
+            settings.palette = paletteList.SelectedImage;
             try
             {
                 string s = JsonConvert.SerializeObject(settings, Formatting.Indented);

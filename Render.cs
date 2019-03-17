@@ -340,7 +340,7 @@ void main()
                             if (!(k >= firstNote && k < lastNote)) continue;
                             Color4 coll = n.track.trkColor[n.channel * 2];
                             Color4 colr = n.track.trkColor[n.channel * 2 + 1];
-                            if (n.start < midiTime)
+                            if (n.start <= midiTime)
                             {
                                 Color4 origcoll = keyColors[k * 2];
                                 Color4 origcolr = keyColors[k * 2 + 1];

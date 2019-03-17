@@ -31,11 +31,9 @@ namespace ClassicRender
             lastNote.Value = settings.lastNote - 1;
             pianoHeight.Value = (int)(settings.pianoHeight * 100);
             noteDeltaScreenTime.Value = Math.Log(settings.deltaTimeOnScreen, 2);
-            screenTime.Content = settings.deltaTimeOnScreen;
             sameWidth.IsChecked = settings.sameWidthNotes;
             if (settings.tickBased) tickBase.SelectedIndex = 0;
             else tickBase.SelectedIndex = 1;
-            screenTime.Content = (Math.Round(settings.deltaTimeOnScreen * 100) / 100).ToString();
             paletteList.SelectImage(settings.palette);
         }
 
@@ -65,12 +63,15 @@ namespace ClassicRender
         {
             try
             {
+                if (screenTimeLock) return;
+                screenTimeLock = true;
                 settings.deltaTimeOnScreen = Math.Pow(2, noteDeltaScreenTime.Value);
-                screenTime.Content = (Math.Round(settings.deltaTimeOnScreen * 100) / 100).ToString();
+                screenTime_nud.Value = (decimal)settings.deltaTimeOnScreen;
+                screenTimeLock = false;
             }
             catch (NullReferenceException)
             {
-
+                screenTimeLock = false;
             }
         }
 
@@ -148,6 +149,23 @@ namespace ClassicRender
                 settings.tickBased = tickBase.SelectedIndex == 0;
             }
             catch (NullReferenceException) { }
+        }
+
+        bool screenTimeLock = false;
+        private void ScreenTime_nud_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            try
+            {
+                if (screenTimeLock) return;
+                screenTimeLock = true;
+                noteDeltaScreenTime.Value = Math.Log((double)screenTime_nud.Value, 2);
+                settings.deltaTimeOnScreen = (double)screenTime_nud.Value;
+                screenTimeLock = false;
+            }
+            catch
+            {
+                screenTimeLock = false;
+            }
         }
     }
 }

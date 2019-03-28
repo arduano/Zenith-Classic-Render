@@ -93,6 +93,8 @@ void main()
 
         public double LastMidiTimePerTick { get; set; } = 500000 / 96.0;
 
+        public MidiFile CurrentMidi { get; set; }
+
         public bool ManualNoteDelete => false;
 
         public int NoteCollectorOffset => 0;
@@ -428,7 +430,7 @@ void main()
 
             LastNoteCount = nc;
             #endregion
-
+            
             #region Keyboard
             y1 = pianoHeight;
             y2 = 0;

@@ -339,7 +339,7 @@ void main()
                             {
                                 Color4 origcoll = keyColors[k * 2];
                                 Color4 origcolr = keyColors[k * 2 + 1];
-                                float blendfac = coll.A * 0.8f;
+                                float blendfac = coll.A;
                                 float revblendfac = 1 - blendfac;
                                 keyColors[k * 2] = new Color4(
                                     coll.R * blendfac + origcoll.R * revblendfac,
@@ -865,21 +865,21 @@ void main()
             GL.BindBuffer(BufferTarget.ArrayBuffer, vertexBufferID);
             GL.BufferData(
                 BufferTarget.ArrayBuffer,
-                (IntPtr)(quadBufferPos * 8 * 8),
+                (IntPtr)(quadBufferPos * 2 * 8 * 4),
                 quadVertexbuff,
                 BufferUsageHint.StaticDraw);
             GL.VertexAttribPointer(0, 2, VertexAttribPointerType.Double, false, 16, 0);
             GL.BindBuffer(BufferTarget.ArrayBuffer, colorBufferID);
             GL.BufferData(
                 BufferTarget.ArrayBuffer,
-                (IntPtr)(quadBufferPos * 16 * 4),
+                (IntPtr)(quadBufferPos * 4 * 4 * 4),
                 quadColorbuff,
                 BufferUsageHint.StaticDraw);
             GL.VertexAttribPointer(1, 4, VertexAttribPointerType.Float, false, 16, 0);
             GL.BindBuffer(BufferTarget.ArrayBuffer, attribBufferID);
             GL.BufferData(
                 BufferTarget.ArrayBuffer,
-                (IntPtr)(quadBufferPos * 8 * 8),
+                (IntPtr)(quadBufferPos * 2 * 8 * 4),
                 quadAttribbuff,
                 BufferUsageHint.StaticDraw);
             GL.VertexAttribPointer(2, 2, VertexAttribPointerType.Double, false, 16, 0);

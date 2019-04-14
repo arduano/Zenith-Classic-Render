@@ -17,7 +17,5 @@ namespace ClassicRender
         public string palette = "Random";
 
         public float noteBrightness = 1;
-
-        public bool tickBased = true;
     }
 }

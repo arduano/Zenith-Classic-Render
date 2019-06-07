@@ -39,7 +39,7 @@ namespace ClassicRender
         {
             InitializeComponent();
             this.settings = settings;
-            paletteList.SetPath("Plugins\\Assets\\Classic\\Palettes");
+            paletteList.SetPath("Plugins\\Assets\\Palettes");
             LoadSettings(true);
             SetValues();
         }

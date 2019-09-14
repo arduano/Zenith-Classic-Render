@@ -6,7 +6,6 @@
 
     <!--Palette picker-->
     <system:String x:Key="palettes_reload">Reload</system:String>
-    <system:String x:Key="palettes_restartNote">Note: Restart preview to update the color palette</system:String>
     <system:String x:Key="palettes_imageNote">Image needs to be a 16 (or 32 for gradients) pixels wide png, and any height. Transparency is supported.</system:String>
     <system:String x:Key="palettes_randomise">Randomise color order</system:String>
     
@@ -19,5 +18,6 @@
     <system:String x:Key="save">Save</system:String>
     <system:String x:Key="loadSaved">Load Saved</system:String>
     <system:String x:Key="setDefaults">Defaults</system:String>
+    <system:String x:Key="blackNotesAbove">Draw black notes above (Warning: SLOWER!!)</system:String>
 
 </ResourceDictionary>

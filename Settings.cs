@@ -10,9 +10,10 @@ namespace ClassicRender
     {
         public int firstNote = 0;
         public int lastNote = 128;
-        public double pianoHeight = 0.18;
+        public double pianoHeight = 0.16;
         public double deltaTimeOnScreen = 294.067;
         public bool sameWidthNotes = true;
+        public bool blackNotesAbove = true;
 
         public string palette = "Random";
 

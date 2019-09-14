@@ -38,6 +38,7 @@ namespace ClassicRender
             pianoHeight.Value = (int)(settings.pianoHeight * 100);
             noteDeltaScreenTime.Value = Math.Log(settings.deltaTimeOnScreen, 2);
             sameWidth.IsChecked = settings.sameWidthNotes;
+            blackNotesAbove.IsChecked = settings.blackNotesAbove;
             paletteList.SelectImage(settings.palette);
         }
 
@@ -111,6 +112,15 @@ namespace ClassicRender
             }
         }
 
+        private void BlackNotesAbove_Checked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                settings.blackNotesAbove = (bool)blackNotesAbove.IsChecked;
+            }
+            catch (NullReferenceException) { }
+        }
+
         private void LoadButton_Click(object sender, RoutedEventArgs e)
         {
             LoadSettings();
@@ -142,6 +152,7 @@ namespace ClassicRender
             try
             {
                 settings.sameWidthNotes = (bool)sameWidth.IsChecked;
+                blackNotesAbove.IsEnabled = !settings.sameWidthNotes;
             }
             catch (NullReferenceException) { }
         }

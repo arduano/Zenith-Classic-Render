@@ -43,6 +43,7 @@ namespace ClassicRender
         public string Description { get; } = "The original graphics renderer with full rendering functionality and vibrant colours";
         public bool Initialized { get; private set; } = false;
         public ImageSource PreviewImage { get; private set; }
+        public string LanguageDictName { get; } = "classic";
 
         public double NoteScreenTime => settings.deltaTimeOnScreen;
         #endregion

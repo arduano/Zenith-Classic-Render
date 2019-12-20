@@ -12,7 +12,6 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://siteoforigin:,,,/Languages/en/classic.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <System:String x:Key="blackNotesAbove">Draw black notes above (Warning: SLOWER!!)</System:String>
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
